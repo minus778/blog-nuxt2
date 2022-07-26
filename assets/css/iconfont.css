@@ -1,0 +1,83 @@
+@font-face {
+  font-family: "iconfont";
+  /* Project id 3528236 */
+  src: url('../font/iconfont.woff2') format('woff2'),
+    url('../font/iconfont.woff') format('woff'),
+    url('../font/iconfont.ttf') format('truetype');
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-kuaijiecaidan:before {
+  content: "\e622";
+}
+
+.icon-aixin1:before {
+  content: "\e85c";
+}
+
+.icon-xiangshang:before {
+  content: "\e664";
+}
+
+.icon-yanjing:before {
+  content: "\e662";
+}
+
+.icon-pinglun:before {
+  content: "\e6ad";
+}
+
+.icon-taiyang-copy:before {
+  content: "\e64c";
+}
+
+.icon-aixin:before {
+  content: "\e617";
+}
+
+.icon-yueliang:before {
+  content: "\e63a";
+}
+
+.icon-gou:before {
+  content: "\e63b";
+}
+
+.icon-chacha:before {
+  content: "\e62f";
+}
+
+.icon-gitee-fill-round:before {
+  content: "\e686";
+}
+
+.icon-liuyan:before {
+  content: "\e744";
+}
+
+.icon-navicon-wzgl:before {
+  content: "\e661";
+}
+
+.icon-sort:before {
+  content: "\e65e";
+}
+
+.icon-wj-wjj:before {
+  content: "\e7b8";
+}
+
+.icon-github:before {
+  content: "\e6f6";
+}
+
+.icon-24gl-tags3:before {
+  content: "\e87d";
+}

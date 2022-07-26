@@ -1,0 +1,16 @@
+/* 移动端适配 CSS  */
+html {
+    font-size: 10vw !important;
+}
+
+@media (min-width: 540px) {
+    html {
+        font-size: 54px !important;
+    }
+}
+
+/* 解决适配后div块布局错乱问题 */
+div {
+    font-size: initial;
+    *font-size: 100%;
+}

@@ -1,0 +1,63 @@
+$textColor: #a862ea;
+$trastion-none: rgba(168, 98, 234, 0);
+$trastion-puple: rgba(168, 98, 234, 1);
+$comment-border: #eeeeee;
+$authorColor: orange;
+$linkText: #ef6d57;
+
+@mixin commonSizeArticle {
+    @media (max-width: 768px) {
+        width: 100%;
+    }
+
+    @media (min-width: 768px) and (max-width: 992px) {
+        width: 90%;
+    }
+
+    @media (min-width: 992px) and (max-width: 1200px) {
+        width: 80%;
+    }
+
+    @media (min-width: 1200px) {
+        width: 70%;
+    }
+
+    margin: 0 auto;
+    margin-top: 50px;
+}
+
+@mixin commonSizeTag {
+    @media (max-width: 768px) {
+        width: 90%;
+    }
+
+    @media (min-width: 768px) and (max-width: 992px) {
+        width: 80%;
+    }
+
+    @media (min-width: 992px) and (max-width: 1200px) {
+        width: 70%;
+    }
+
+    @media (min-width: 1200px) {
+        width: 60%;
+    }
+
+    margin: 0 auto;
+    margin-top: 50px;
+}
+
+@mixin categoryChoose {
+    transition: transform 0.2s linear;
+
+    &:hover {
+        color: $textColor;
+        transform: scale(1.05);
+    }
+}
+
+@mixin textNowrap {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
