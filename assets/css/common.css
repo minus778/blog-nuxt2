@@ -39,18 +39,18 @@ h3 {
 }
 
 
-body::-webkit-scrollbar {
+*::-webkit-scrollbar {
     width: 10px;
     height: 10px;
 }
 
 /* 修改浏览器滚动条样式 */
-body::-webkit-scrollbar {
+*::-webkit-scrollbar {
     width: 8px;
 }
 
 /*正常情况下滚动条滑块的样式*/
-body::-webkit-scrollbar-thumb {
+*::-webkit-scrollbar-thumb {
     background-color: rgba(238, 238, 238, .8);
     border-radius: 10px;
     box-shadow: inset 1px 1px 0 rgba(238, 238, 238, .8);
@@ -58,7 +58,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 /*鼠标悬浮在滑块上时滚动条滑块的样式*/
-body::-webkit-scrollbar-thumb:hover {
+*::-webkit-scrollbar-thumb:hover {
     background-color: rgba(221, 221, 221, .9);
     box-shadow: inset 1px 1px 0 rgba(221, 221, 221, .9);
     -webkit-box-shadow: inset 1px 1px 0 rgba(221, 221, 221, .9);

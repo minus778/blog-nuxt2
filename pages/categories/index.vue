@@ -77,7 +77,7 @@ export default {
             categoryList.forEach(val => {
                 let typeList = []
                 typeList = res.data.filter(item => {
-                    return item.categoryId === val.id
+                    return item.categoryId === val.id && item.isshow === 'true'
                 })
                 typeList.unshift(val.name)
                 list.push(typeList)

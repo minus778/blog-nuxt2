@@ -17,9 +17,9 @@ export default {
     port: 3000
   },
   //配置环境变量
-  env: {
-    baseUrl: process.env.NODE_ENV === 'dev' ? 'http://localhost:4000' : ''
-  },
+  // env: {
+  //   baseUrl: process.env.NODE_ENV === 'dev' ? 'http://localhost:4000' : ''
+  // },
   //加载进度条样式
   loading: { color: '#fff' },
   //引入css文件

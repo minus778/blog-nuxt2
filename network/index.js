@@ -8,13 +8,13 @@ export default ({ $axios }, inject) => {
     //获取分类信息
     inject('getCategories', () => $axios.$get(`/categories/getCategories`))
     //获取文章评论信息（传递文章id则查询文章id对应评论）
-    inject('getComment', (id) => $axios.$get(`/articles/getComment/${id}`))
+    inject('getComment', (id) => $axios.$get(`/comment/getComment/${id}`))
     //获取留言(不传递文章id则查询留言)
-    inject('getMessage', () => $axios.$get(`/articles/getComment`))
+    inject('getMessage', () => $axios.$get(`/comment/getComment`))
     //提交评论表单信息
-    inject('submitComment', (data) => $axios.$post(`/articles/submitComment`, data))
+    inject('submitComment', (data) => $axios.$post(`/comment/submitComment`, data))
     //获取最新评论
-    inject('getLatestComment', () => $axios.$get(`/articles/getLatestComment`))
+    inject('getLatestComment', () => $axios.$get(`/comment/getLatestComment`))
     //获取文章内容
     inject('getArticleContent', (id) => $axios.$get(`/articles/getArticleContent/${id}`))
     //将文章已读数加一

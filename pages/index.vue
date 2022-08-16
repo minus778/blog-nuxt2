@@ -3,12 +3,12 @@
     <div class="avatar" @mouseenter="mouseAction" @mouseleave="mouseAction"
       :class="{ avatarUp: isAnm, avatarDown: !isAnm && isFirst === -1 }">
       <div class="circles">
-        <img :src="`${baseUrl}/${mess.avatar}`" />
+        <img :src="`${blogMes.websiteAddress}${blogMes.avatar}`" />
       </div>
     </div>
-    <p class="name">{{ mess.name }}</p>
-    <p class="introduce">{{ mess.introduce }}</p>
-    <p class="desc">{{ mess.desc }}</p>
+    <p class="name">{{ blogMes.name }}</p>
+    <p class="introduce">{{ blogMes.introduce }}</p>
+    <p class="desc">{{ blogMes.desc }}</p>
     <div class="tags">
       <ul>
         <li>
@@ -24,11 +24,11 @@
           <nuxt-link to="/messages" title="留言板"><i class="iconfont icon-liuyan"></i></nuxt-link>
         </li>
         <li>
-          <a :href="mess.github" target="_blank" title="github"><i class="iconfont icon-github"></i>
+          <a :href="blogMes.github" target="_blank" title="github"><i class="iconfont icon-github"></i>
           </a>
         </li>
         <li>
-          <a :href="mess.gitee" target="_blank" title="gitee"><i class="iconfont icon-gitee"></i>
+          <a :href="blogMes.gitee" target="_blank" title="gitee"><i class="iconfont icon-gitee-fill-round"></i>
           </a>
         </li>
       </ul>
@@ -42,8 +42,8 @@ export default {
   data() {
     return {
       isAnm: false,
-      isFirst: 0,
-      baseUrl: process.env.baseUrl
+      isFirst: 0
+      //baseUrl: process.env.baseUrl
     }
   },
   methods: {
@@ -52,16 +52,21 @@ export default {
       this.isAnm = !this.isAnm
     }
   },
-  async asyncData({ app }) {
-    const res = await app.$getHome()
-    if (res.code === 200) {
-      return {
-        mess: res.data
-      }
-    } else {
-      console.log('error:', res.msg);
+  computed: {
+    blogMes() {
+      return this.$store.state.blogMes
     }
   }
+  // async asyncData({ app }) {
+  //   const res = await app.$getHome()
+  //   if (res.code === 200) {
+  //     return {
+  //       mess: res.data
+  //     }
+  //   } else {
+  //     console.log('error:', res.msg);
+  //   }
+  // }
 }
 </script>
 

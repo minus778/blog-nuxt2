@@ -4,7 +4,7 @@
         <div class="header">
             <div class="left">
                 <nuxt-link to="/">
-                    <span>haixtx的个人博客</span>
+                    <span>{{ name }}的个人博客</span>
                 </nuxt-link>
             </div>
             <!-- pc端 -->
@@ -97,6 +97,11 @@ export default {
         changeBgColor() {
             this.isFirst = -1
             this.isOpen = !this.isOpen
+        }
+    },
+    computed: {
+        name() {
+            return this.$store.getters['getName']
         }
     }
 }

@@ -1,10 +1,10 @@
 <!-- 布局底部区域 -->
 <template>
     <div id="footer">
-        <p class="front">{{ recode.recodeOne }}</p>
-        <p class="back" v-if="recode.recodeTwo && recode.recodeThree">{{ recode.recodeTwo }}&nbsp;&nbsp;|&nbsp;&nbsp;{{
+        <p class="front">{{ recode.recode }}</p>
+        <!-- <p class="back" v-if="recode.recodeTwo && recode.recodeThree">{{ recode.recodeTwo }}&nbsp;&nbsp;|&nbsp;&nbsp;{{
                 recode.recodeThree
-        }}</p>
+        }}</p> -->
     </div>
 </template>
 

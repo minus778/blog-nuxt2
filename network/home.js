@@ -5,6 +5,6 @@ export default ({ $axios }, inject) => {
     // 获取网站信息
     inject('getBlogMes', () => $axios.$get('/getBlogMes'))
 
-    //获取网站首页信息
-    inject('getHome', () => $axios.$get('/getHome'))
+    // //获取网站首页信息
+    // inject('getHome', () => $axios.$get('/getHome'))
 }

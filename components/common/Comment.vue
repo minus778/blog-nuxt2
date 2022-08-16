@@ -35,7 +35,7 @@
                                     <img src="@/assets/imgs/avatar.jpg">
                                 </div>
                                 <span class="name">{{ item.froms }}</span>
-                                <span class="author" v-if="item.froms === 'haixtx'">作者</span>
+                                <span class="author" v-if="item.froms === name">作者</span>
                             </div>
                             <div class="right">
                                 <span class="reply" @click="reply(item, item.id, i)">回复</span>
@@ -53,7 +53,7 @@
                                     <img src="@/assets/imgs/avatar.jpg">
                                 </div>
                                 <span class="name">{{ child.froms }}</span>
-                                <span class="author" v-if="child.froms === 'haixtx'">作者</span>
+                                <span class="author" v-if="child.froms === name">作者</span>
                             </div>
                             <div class="right">
                                 <span class="reply" @click="reply(child, item.id, i)">回复</span>
@@ -107,6 +107,11 @@ export default {
             default: 0
         }
     },
+    computed: {
+        name() {
+            return this.$store.getters['getName']
+        }
+    },
     methods: {
         //提交评论
         async submit() {
@@ -123,7 +128,7 @@ export default {
                 this.textcolor = 'red'
             } else {
                 this.submitForm.articleId = this.articleId
-                this.submitForm.date = new Date()
+                this.submitForm.date = +new Date()
                 //提交表单数据
                 let res = await this.$submitComment(this.submitForm)
                 if (res.code === 200) {
@@ -184,10 +189,6 @@ export default {
             this.childListIndex = -1
         },
         getTime(list) {
-            list.forEach(item => {
-                //将评论列表数组中的事件转换为总毫秒
-                item.date = +new Date(item.date)
-            })
             //根据总毫秒将评论排序
             list.sort(this.compare('date'))
             //将总毫秒转换为正常时间格式

@@ -24,7 +24,9 @@
 export default {
     name: 'ArticleList',
     data() {
-        return {}
+        return {
+            article: []
+        }
     },
     props: {
         name: {
@@ -41,15 +43,12 @@ export default {
             required: true
         }
     },
+    mounted() {
+        this.article = this.articles()
+    },
     methods: {
         getTime(list) {
             list.forEach(item => {
-                //将文章列表数组中的事件转换为总毫秒
-                item.forEach(items => {
-                    if (items.date) {
-                        items.date = +new Date(items.date)
-                    }
-                })
                 //根据总毫秒将文章排序
                 item.sort(this.compare('date'))
                 //将总毫秒转换为正常时间格式
@@ -75,13 +74,13 @@ export default {
                 path: '/article',
                 query: { articleId: id }
             })
-        }
-    },
-    computed: {
-        article() {
+        },
+        //这个方法原本是作为computed计算属性用的，但是计算属性服务端和客户端都会执行一次，最终以客户端的为最终结果，由于执行了两次所以结果会出问题，就只能变为method方法在mounted中调用，以此只在客户端调用一次
+        //将文章列表分类并排序
+        articles() {
             let yearList = []
             this.articleList.forEach(item => {
-                let year = item.date.split('-')[0]
+                let year = new Date(item.date).getFullYear()
                 yearList.push(year)
             })
             //所有文章所包含的时间数组（不重复）
@@ -90,8 +89,9 @@ export default {
             //将所有文章按不同时间存放到单独的数组中（整体是二维数组格式）
             for (let i = 0; i < yearList.length; i++) {
                 let list = this.articleList.filter(item => {
-                    let year = item.date.split('-')[0]
-                    return yearList[i] === year
+                    let year = new Date(item.date).getFullYear()
+                    //隐藏的文章不展示
+                    return yearList[i] === year && item.isshow === 'true'
                 })
                 article.push(list)
             }

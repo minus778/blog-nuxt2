@@ -3,7 +3,7 @@ export const state = () => ({
     categoryList: [],
     //标签列表
     tagList: [],
-    //网站底部备案信息
+    //网站信息
     blogMes: {}
 })
 
@@ -35,5 +35,9 @@ export const actions = {
 }
 
 export const getters = {
+    //返回名称
+    getName(state) {
+        return state.blogMes.name
+    }
 
 }
