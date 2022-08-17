@@ -34,7 +34,7 @@
                     </div>
                 </div>
 
-                <div class="content markdown-body" v-html="articleContent.content">
+                <div class="content markdown-body" v-html="articleContent.htmlContent">
                 </div>
             </div>
             <Comment :commentList="commentList" @refreshLength="refreshLength" :length="length"

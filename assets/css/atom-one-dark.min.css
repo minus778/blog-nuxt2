@@ -82,3 +82,7 @@ code.hljs {
 .hljs-link {
     text-decoration: underline
 }
+
+.hljs-center {
+    text-align: center;
+}

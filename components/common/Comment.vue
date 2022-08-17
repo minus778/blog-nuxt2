@@ -12,6 +12,10 @@
             <div class="input-text">
                 <textarea placeholder="What do you want to say..." v-model="submitForm.content"></textarea>
             </div>
+            <div class="authorCode input-name" v-if="submitForm.froms === name">
+                <span>输入授权码：</span>
+                <input type="text" placeholder="Authorization code" v-model="submitForm.authorCode">
+            </div>
             <div class="submit">
                 <div class="button" @click="submit">SUBMIT</div>
                 <span class="iconfont icon-chacha" :style="{ color: textcolor, fontSize: '14px' }"
@@ -19,6 +23,7 @@
                 <span class="iconfont icon-gou" :style="{ color: textcolor, top: '-1px' }"
                     v-if="textcolor === 'green'"></span>
                 <span :style="{ color: textcolor }">{{ text }}</span>
+                <span v-if="submitForm.froms === name" class="authorTip">(是作者本人吗？需要授权码哦~)</span>
             </div>
         </div>
         <div class="comment-list">
@@ -32,7 +37,8 @@
                         <div class="namedate">
                             <div class="left">
                                 <div class="avatar">
-                                    <img src="@/assets/imgs/avatar.jpg">
+                                    <!-- 10张头像随机挑一张 -->
+                                    <img :src="url + item.avatar">
                                 </div>
                                 <span class="name">{{ item.froms }}</span>
                                 <span class="author" v-if="item.froms === name">作者</span>
@@ -50,7 +56,8 @@
                         <div class="namedate">
                             <div class="left">
                                 <div class="avatar">
-                                    <img src="@/assets/imgs/avatar.jpg">
+                                    <!-- 10张头像随机挑一张 -->
+                                    <img :src="url + child.avatar">
                                 </div>
                                 <span class="name">{{ child.froms }}</span>
                                 <span class="author" v-if="child.froms === name">作者</span>
@@ -72,6 +79,7 @@
 </template>
 
 <script>
+
 export default {
     name: 'Comment',
     data() {
@@ -86,7 +94,8 @@ export default {
                 date: '',
                 articleId: null,
                 parentId: null,
-                toId: null
+                toId: null,
+                authorCode: ''
             },
             childListIndex: -1,
             text: '~认真和用心是一种态度, 感谢支持~',
@@ -110,6 +119,14 @@ export default {
     computed: {
         name() {
             return this.$store.getters['getName']
+        },
+        //获取后端url
+        url() {
+            return this.$store.getters['getWebsiteUrl']
+        },
+        //获取密码
+        password() {
+            return this.$store.getters['getPassword']
         }
     },
     methods: {
@@ -126,6 +143,9 @@ export default {
             } else if (!this.submitForm.content) {
                 this.text = '留下你要说的话~'
                 this.textcolor = 'red'
+            } else if (this.submitForm.froms === this.name && this.submitForm.authorCode != this.password) {
+                this.text = '授权码有点问题，再想想~'
+                this.textcolor = 'red'
             } else {
                 this.submitForm.articleId = this.articleId
                 this.submitForm.date = +new Date()
@@ -139,7 +159,7 @@ export default {
                     this.text = res.msg
                     this.textcolor = 'green'
                     setTimeout(() => {
-                        this.text = '~认真和用心是一种态度, 感谢支持~'
+                        this.text = '~善语结善缘，恶语伤人心~'
                         this.textcolor = 'gray'
                     }, 3000)
                 }
@@ -172,6 +192,8 @@ export default {
             this.submitForm.articleId = null
             this.submitForm.parentId = null
             this.submitForm.toId = null
+            //重置授权码
+            this.submitForm.authorCode = ''
             this.childListIndex = -1
         },
         //点击回复按钮（item是当前评论，id为一级评论id，i为当前评论对应一级评论的索引-用于确定一级评论对应的二级评论数组）
@@ -307,6 +329,17 @@ export default {
             }
         }
 
+        .authorCode {
+            display: flex;
+            align-items: center;
+            justify-content: left;
+
+            span {
+                font-size: 14px;
+                color: $textColor;
+            }
+        }
+
         .submit {
             display: flex;
             align-items: center;
@@ -330,10 +363,16 @@ export default {
                 }
             }
 
+
             span {
                 position: relative;
                 font-size: 13px;
                 transition: all 0.2s linear;
+            }
+
+            .authorTip {
+                margin-left: 10px;
+                color: $textColor;
             }
         }
     }

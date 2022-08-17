@@ -1,6 +1,6 @@
 <template>
     <div class="about">
-        <div class="content markdown-body" v-html="content.content">
+        <div class="content markdown-body" v-html="content.htmlContent">
         </div>
     </div>
 </template>

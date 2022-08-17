@@ -38,6 +38,14 @@ export const getters = {
     //返回名称
     getName(state) {
         return state.blogMes.name
+    },
+    //返回后端url
+    getWebsiteUrl(state) {
+        return state.blogMes.websiteAddress
+    },
+    //返回密码
+    getPassword(state) {
+        return state.blogMes.password
     }
 
 }
