@@ -1,0 +1,17 @@
+#node服务器
+FROM node:16
+FROM nginx
+LABEL name="blog-nuxt2"
+LABEL version="latest"
+RUN mkdir -p /usr/src
+COPY ./.nuxt /usr/src
+COPY ./static /usr/src
+COPY ./nuxt.config.js /usr/src
+COPY ./package.json /usr/src
+#将项目下的nginx配置文件放在nginx子配置文件夹目录下
+COPY ./nginx/blog-nuxt2.conf /etc/nginx/conf.d/
+COPY ./nginx/gzip.conf /etc/nginx/conf.d/
+WORKDIR /usr/src
+RUN npm install
+EXPOSE 80
+CMD ["npm","start"]
