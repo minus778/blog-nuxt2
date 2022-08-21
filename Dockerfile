@@ -18,4 +18,4 @@ WORKDIR /usr/src
 RUN npm install
 RUN npm run build
 EXPOSE 82
-CMD npm start && nginx -c /etc/nginx/nginx.conf
+CMD sh ./nginx.sh
