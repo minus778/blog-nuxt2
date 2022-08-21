@@ -8,6 +8,10 @@ LABEL name="blog-nuxt2"
 LABEL version="latest"
 RUN mkdir -p /usr/src
 COPY . /usr/src
+# 安装nginx
+RUN yum install nginx
+COPY ./nginx/blog-nuxt2.conf /etc/nginx/conf.d/
+COPY ./nginx/gzip.conf /etc/nginx/conf.d/
 WORKDIR /usr/src
 RUN npm install
 RUN npm run build
