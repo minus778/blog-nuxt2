@@ -14,7 +14,7 @@ RUN apt-get update
 RUN apt-get install nginx -y
 COPY ./nginx/blog-nuxt2.conf /etc/nginx/conf.d/
 # 启动nginx
-RUN nginx -c /etc/nginx/nginx.conf && nginx -s reload
+RUN nginx -c /etc/nginx/nginx.conf
 # COPY ./nginx/gzip.conf /etc/nginx/conf.d/
 WORKDIR /usr/src
 RUN npm install
