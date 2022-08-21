@@ -19,3 +19,6 @@ RUN npm install
 RUN npm run build
 EXPOSE 82
 CMD ["npm","start"]
+# 启动nginx
+CMD ["nginx","-c","/etc/nginx/nginx.conf"]
+CMD ["nginx","-s","reload"]
