@@ -8,8 +8,8 @@ LABEL name="blog-nuxt2"
 LABEL version="latest"
 RUN mkdir -p /usr/src
 COPY . /usr/src
-# 安装nginx
-RUN yum install nginx
+# 安装nginx(由于action使用的ubuntu系统，所以安装的镜像内部也是ubuntu镜像，安装命令为apt而不是yum)
+RUN apt install nginx
 COPY ./nginx/blog-nuxt2.conf /etc/nginx/conf.d/
 COPY ./nginx/gzip.conf /etc/nginx/conf.d/
 WORKDIR /usr/src
