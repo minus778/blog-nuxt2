@@ -3,13 +3,13 @@
 # COPY ./nginx/blog-nuxt2.conf /etc/nginx/conf.d/
 # COPY ./nginx/gzip.conf /etc/nginx/conf.d/
 # node服务器
-FROM node:16
+FROM node:16.14.2
 LABEL name="blog-nuxt2"
 LABEL version="latest"
 RUN mkdir -p /usr/src
 COPY . /usr/src
 WORKDIR /usr/src
 RUN npm install
-RUN npm build
+RUN npm run build
 EXPOSE 3000
 CMD ["npm","start"]
