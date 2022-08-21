@@ -14,11 +14,10 @@ RUN apt-get update
 RUN apt-get install nginx -y
 COPY ./nginx/blog-nuxt2.conf /etc/nginx/conf.d/
 # COPY ./nginx/gzip.conf /etc/nginx/conf.d/
+RUN nginx -c /etc/nginx/nginx.conf
+RUN nginx -s reload
 WORKDIR /usr/src
 RUN npm install
 RUN npm run build
 EXPOSE 82
 CMD ["npm","start"]
-# 启动nginx
-CMD ["nginx","-c","/etc/nginx/nginx.conf"]
-CMD ["nginx","-s","reload"]
