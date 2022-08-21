@@ -32,4 +32,4 @@ jobs:
             docker rmi -f $(docker images ${{ secrets.DOCKER_REPOSITORY }}:latest -q)
             docker login ccr.ccs.tencentyun.com --username=${{ secrets.DOCKER_USERNAME }} --password ${{ secrets.DOCKER_PASSWORD }}
             docker pull ${{ secrets.DOCKER_REPOSITORY }}:latest
-            docker run -d -p 80:3000 ${{ secrets.DOCKER_REPOSITORY }}:latest
+            docker run -d -p 82:3000 ${{ secrets.DOCKER_REPOSITORY }}:latest
