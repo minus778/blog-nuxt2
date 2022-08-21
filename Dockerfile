@@ -7,11 +7,9 @@ FROM node:16
 LABEL name="blog-nuxt2"
 LABEL version="latest"
 RUN mkdir -p /usr/src
-COPY ./.nuxt /usr/src
-COPY ./static /usr/src
-COPY ./nuxt.config.js /usr/src
-COPY ./package.json /usr/src
+COPY . /usr/src
 WORKDIR /usr/src
 RUN npm install
+RUN npm build
 EXPOSE 3000
 CMD ["npm","start"]
