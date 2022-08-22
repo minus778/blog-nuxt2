@@ -8,7 +8,7 @@
                     <div v-if="i % 2 === 0" class="artilce-item">
                         <div class="title" @click="toCategoryDetail(item)">
                             <i class="iconfont icon-wj-wjj"></i>
-                            <span>{{ item[0] }}</span>
+                            <span>{{ item[0].name }}</span>
                         </div>
                         <ul class="list">
                             <template v-for="(article, index) in item">
@@ -27,7 +27,7 @@
                     <div v-if="i % 2 !== 0" class="artilce-item">
                         <div class="title" @click="toCategoryDetail(item)">
                             <i class="iconfont icon-wj-wjj"></i>
-                            <span>{{ item[0] }}</span>
+                            <span>{{ item[0].name }}</span>
                         </div>
                         <ul class="list">
                             <template v-for="(article, index) in item">
@@ -55,8 +55,8 @@ export default {
     methods: {
         toCategoryDetail(list) {
             this.$router.push({
-                path: `/categories/${list[0]}`,
-                query: { id: list[1].categoryId }
+                path: `/categories/${list[0].name}`,
+                query: { id: list[0].id }
             })
         },
         toArticle(id) {
@@ -79,7 +79,8 @@ export default {
                 typeList = res.data.filter(item => {
                     return item.categoryId === val.id && item.isshow === 'true'
                 })
-                typeList.unshift(val.name)
+                //将分类名及id组成的对象放在所属分类文章数组最前面
+                typeList.unshift({ id: val.id, name: val.name })
                 list.push(typeList)
             })
             return {
