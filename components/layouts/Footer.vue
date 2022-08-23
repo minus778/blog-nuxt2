@@ -1,7 +1,7 @@
 <!-- 布局底部区域 -->
 <template>
     <div id="footer">
-        <p class="front">{{ recode.recode }}</p>
+        <a href="https://beian.miit.gov.cn/" target="_blank" class="front">{{ recode.recode }}</a>
         <!-- <p class="back" v-if="recode.recodeTwo && recode.recodeThree">{{ recode.recodeTwo }}&nbsp;&nbsp;|&nbsp;&nbsp;{{
                 recode.recodeThree
         }}</p> -->

@@ -62,7 +62,7 @@ export default {
   proxy: {
     //配置代理转发的url
     '/api': {
-      target: 'http://haixtx.club:3000',
+      target: 'https://node.haixtx.club',
       //pathRewrite: { '^/api': '' } // 代理前将 /api 前缀去除
     }
   },
