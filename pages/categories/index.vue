@@ -83,6 +83,10 @@ export default {
                 typeList.unshift({ id: val.id, name: val.name })
                 list.push(typeList)
             })
+            //从大到小排序为了展示时左右两边文章数看着均匀
+            list.sort((a, b) => {
+                return b.length - a.length
+            })
             return {
                 categoryList: categoryList,
                 articleList: list
