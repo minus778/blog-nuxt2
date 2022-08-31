@@ -212,7 +212,7 @@
 }
 
 .markdown-body a {
-  color: #0366d6;
+  color: #a862ea;
   text-decoration: none;
 }
 
@@ -311,7 +311,7 @@
 }
 
 .markdown-body ul li {
-  list-style: circle;
+  list-style: disc;
 }
 
 .markdown-body ol ol,
@@ -621,6 +621,7 @@
 
 .markdown-body pre {
   word-wrap: normal;
+  box-shadow: 0 0 10px #e7daff;
 }
 
 .markdown-body pre>code {
@@ -709,4 +710,29 @@
 
 .markdown-body hr {
   border-bottom-color: #eee;
+}
+
+.markdown-body ol li::marker,
+.markdown-body ul li::marker {
+  color: #a862ea;
+}
+
+.markdown-body code {
+  color: #a862ea;
+  background-color: #f8f5ff;
+}
+
+.markdown-body blockquote {
+  padding: .5em 1em;
+  margin: 12px 0;
+  border-top-left-radius: 2px;
+  border-bottom-left-radius: 2px;
+  border-left: 3px solid #a862ea;
+  background-color: #f8f5ff;
+}
+
+.markdown-body pre,
+.markdown-body pre code {
+  color: #333;
+  background: #f8f8f8;
 }
