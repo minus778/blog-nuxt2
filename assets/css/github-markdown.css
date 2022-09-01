@@ -736,3 +736,7 @@
   color: #333;
   background: #f8f8f8;
 }
+
+.markdown-body strong {
+  color: #a862ea;
+}
