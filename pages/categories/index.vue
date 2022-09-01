@@ -5,7 +5,8 @@
         <div class="allList">
             <div class="left">
                 <template v-for="(item, i) in articleList">
-                    <div v-if="i % 2 === 0" class="artilce-item">
+                    <!-- 分类最后一个始终放在右边来维持左右两边的平衡 -->
+                    <div v-if="i % 2 === 0 && i != articleList.length - 1" class="artilce-item">
                         <div class="title" @click="toCategoryDetail(item)">
                             <i class="iconfont icon-wj-wjj"></i>
                             <span>{{ item[0].name }}</span>
@@ -24,7 +25,7 @@
             </div>
             <div class="right">
                 <template v-for="(item, i) in articleList">
-                    <div v-if="i % 2 !== 0" class="artilce-item">
+                    <div v-if="i % 2 !== 0 || i === articleList.length - 1" class="artilce-item">
                         <div class="title" @click="toCategoryDetail(item)">
                             <i class="iconfont icon-wj-wjj"></i>
                             <span>{{ item[0].name }}</span>
