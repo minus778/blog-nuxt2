@@ -14,7 +14,7 @@ export default {
   //配置启动服务器
   server: {
     host: '127.0.0.1',
-    port: 4000
+    port: 5000  //4000
   },
   //配置环境变量
   // env: {
@@ -62,7 +62,8 @@ export default {
   proxy: {
     //配置代理转发的url
     '/api': {
-      target: 'https://node.haixtx.club',
+      // target: 'https://node.haixtx.club',
+      target: 'http://localhost:4000',
       //pathRewrite: { '^/api': '' } // 代理前将 /api 前缀去除
     }
   },
