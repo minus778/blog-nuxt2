@@ -14,7 +14,7 @@ export default {
   //配置启动服务器
   server: {
     host: '127.0.0.1',
-    port: 5000  //4000
+    port: 4000  //4000
   },
   //配置环境变量
   // env: {
