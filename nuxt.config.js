@@ -63,7 +63,7 @@ export default {
     //配置代理转发的url
     '/api': {
       // target: 'https://node.haixtx.cn',
-      target: process.env.NODE_ENV === 'dev' ? 'http://localhost:4000' : 'http://114.55.75.3:4000',
+      target: process.env.NODE_ENV === 'dev' ? 'http://localhost:4000' : 'http://114.55.75.3:3000',
       //pathRewrite: { '^/api': '' } // 代理前将 /api 前缀去除
     }
   },
