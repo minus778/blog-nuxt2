@@ -12,6 +12,6 @@ COPY ./nginx/blog-nuxt2.conf /etc/nginx/conf.d/
 COPY ./nginx/gzip.conf /etc/nginx/conf.d/
 WORKDIR /usr/src
 RUN npm install
-# RUN npm run build
+RUN npm run build
 EXPOSE 82
 CMD sh ./nginx.sh
