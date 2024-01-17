@@ -62,8 +62,8 @@ export default {
   proxy: {
     //配置代理转发的url
     '/api': {
-      // target: 'https://node.haixtx.club',
-      target: 'http://localhost:4000',
+      // target: 'https://node.haixtx.cn',
+      target: process.env.NODE_ENV === 'dev' ? 'http://localhost:4000' : 'http://114.55.75.3:4000',
       //pathRewrite: { '^/api': '' } // 代理前将 /api 前缀去除
     }
   },
@@ -85,7 +85,7 @@ export default {
     /*
     ** You can extend webpack config here
     */
-    extend(config, ctx) { }
+    extend (config, ctx) { }
   },
   //自动引入组件
   components: {
